@@ -1,0 +1,11 @@
+{
+    "isDev": true,
+    "isProd": false,
+    "apiKey": "",
+    "authDomain": "",
+    "projectId": "",
+    "storageBucket": "",
+    "messagingSenderId": "",
+    "appId": "",
+    "measurementId": ""
+}

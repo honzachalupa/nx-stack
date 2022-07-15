@@ -1,0 +1,11 @@
+{
+    "version": 2,
+    "projects": {
+        "firebase-functions": "packages/apps/firebase-functions",
+        "react-app": "packages/apps/react-app",
+        "react-app-e2e": "packages/apps/react-app-e2e",
+        "types": "packages/libs/types",
+        "ui": "packages/libs/ui",
+        "utils": "packages/libs/utils"
+    }
+}

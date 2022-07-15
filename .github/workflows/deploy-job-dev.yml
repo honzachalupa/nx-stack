@@ -1,0 +1,57 @@
+name: Deploy to DEV
+
+on:
+    push:
+        branches: [develop]
+
+jobs:
+    deploy:
+        name: Deploy
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                  cache: "yarn"
+                  node-version-file: ".nvmrc"
+
+            - name: Setup Nx
+              uses: nrwl/nx-set-shas@v2
+              with:
+                  main-branch-name: ${{ github.base_ref }}
+
+            - name: Install NPM dependencies
+              run: yarn install
+
+            - name: Lint
+              run: yarn lint
+
+            - name: Test
+              run: yarn test
+
+            - name: Build
+              run: yarn build:dev
+
+            - name: Deploy
+              uses: w9jds/firebase-action@master
+              with:
+                  args: deploy --message \"${{ github.event.head_commit.message }}\"
+              env:
+                  PROJECT_ID: TOFILL
+                  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+            - name: Publish storybooks
+              run: yarn storybooks:publish
+
+            - name: Notify
+              uses: rtCamp/action-slack-notify@v2.2.0
+              env:
+                  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+                  SLACK_USERNAME: TOFILL
+                  SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+                  SLACK_MESSAGE: ${{ github.event.head_commit.message }}

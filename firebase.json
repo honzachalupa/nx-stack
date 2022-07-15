@@ -1,0 +1,39 @@
+{
+    "hosting": {
+        "public": "dist/react-app",
+        "rewrites": [
+            {
+                "source": "**",
+                "destination": "/index.html"
+            }
+        ],
+        "headers": [
+            {
+                "source": "/service-worker.js",
+                "headers": [
+                    {
+                        "key": "Cache-Control",
+                        "value": "no-cache"
+                    }
+                ]
+            }
+        ]
+    },
+    "functions": {
+        "runtime": "nodejs16",
+        "source": "dist/firebase-functions"
+    },
+    "firestore": {
+        "rules": ".firebase/firestore.rules",
+        "indexes": ".firebase/firestore.indexes.json"
+    },
+    "storage": {
+        "rules": ".firebase/storage.rules"
+    },
+    "emulators": {
+        "hosting": {
+            "host": "localhost",
+            "port": "8081"
+        }
+    }
+}

@@ -1,0 +1,104 @@
+{
+    "root": "packages/apps/react-app",
+    "sourceRoot": "packages/apps/react-app/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nrwl/web:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "compiler": "babel",
+                "outputPath": "dist/react-app",
+                "index": "packages/apps/react-app/src/index.html",
+                "baseHref": "/",
+                "main": "packages/apps/react-app/src/index.tsx",
+                "polyfills": "packages/apps/react-app/src/polyfills.ts",
+                "tsConfig": "packages/apps/react-app/tsconfig.app.json",
+                "assets": ["packages/apps/react-app/src/assets"],
+                "styles": [],
+                "scripts": [],
+                "webpackConfig": "packages/apps/react-app/webpack.config.js"
+            },
+            "configurations": {
+                "production": {
+                    "fileReplacements": [
+                        {
+                            "replace": "packages/apps/react-app/src/environments/environment.ts",
+                            "with": "packages/apps/react-app/src/environments/environment.prod.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": false,
+                    "extractLicenses": true,
+                    "vendorChunk": false
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nrwl/web:dev-server",
+            "options": {
+                "buildTarget": "react-app:build",
+                "port": 8080,
+                "hmr": true
+            },
+            "configurations": {
+                "production": {
+                    "buildTarget": "react-app:build:production",
+                    "hmr": false
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": [
+                    "packages/apps/react-app/**/*.{ts,tsx,js,jsx}"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/packages/apps/react-app"],
+            "options": {
+                "jestConfig": "packages/apps/react-app/jest.config.js",
+                "passWithNoTests": true
+            }
+        },
+        "storybook": {
+            "executor": "@nrwl/storybook:storybook",
+            "options": {
+                "uiFramework": "@storybook/react",
+                "port": 4400,
+                "config": {
+                    "configFolder": "packages/apps/react-app/.storybook"
+                }
+            },
+            "configurations": {
+                "ci": {
+                    "quiet": true
+                }
+            }
+        },
+        "build-storybook": {
+            "executor": "@nrwl/storybook:build",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "uiFramework": "@storybook/react",
+                "outputPath": "dist/storybooks/react-app",
+                "config": {
+                    "configFolder": "packages/apps/react-app/.storybook"
+                }
+            },
+            "configurations": {
+                "ci": {
+                    "quiet": true
+                }
+            }
+        }
+    },
+    "tags": []
+}

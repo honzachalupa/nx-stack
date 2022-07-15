@@ -1,0 +1,32 @@
+{
+    "root": "packages/apps/firebase-functions",
+    "sourceRoot": "packages/apps/firebase-functions/src",
+    "targets": {
+        "build": {
+            "executor": "@nrwl/js:tsc",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/firebase-functions",
+                "main": "packages/apps/firebase-functions/src/index.ts",
+                "tsConfig": "packages/apps/firebase-functions/tsconfig.lib.json",
+                "assets": ["packages/apps/firebase-functions/*.md"]
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["packages/apps/firebase-functions/**/*.ts"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/packages/apps/firebase-functions"],
+            "options": {
+                "jestConfig": "packages/apps/firebase-functions/jest.config.js",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}

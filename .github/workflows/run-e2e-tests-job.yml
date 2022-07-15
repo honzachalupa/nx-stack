@@ -1,0 +1,20 @@
+name: Run E2E tests
+
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                type: choice
+                description: "Environment to run tests against"
+                options:
+                    - PROD
+                    - DEV
+                required: true
+
+jobs:
+    run:
+        name: Run E2E tests
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                  echo "Environment: ${{ github.event.inputs.environment }}"
