@@ -11,4 +11,4 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
-                  echo "Environment: ${{ FIREBASE_PROJECT_ID }}"
+                  echo "Environment: $FIREBASE_PROJECT_ID"
