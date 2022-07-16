@@ -2,10 +2,13 @@ name: Test
 
 on: workflow_dispatch
 
+env:
+    FIREBASE_PROJECT_ID: Working
+
 jobs:
     run:
         name: Run
         runs-on: ubuntu-latest
         steps:
             - run: |
-                  echo "Environment: ${{ env }}"
+                  echo "Environment: ${{ FIREBASE_PROJECT_ID }}"
