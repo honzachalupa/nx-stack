@@ -6,7 +6,7 @@
     "scripts": {
         "start": "NODE_ENV=development nx serve",
         "start:prod": "NODE_ENV=production nx serve",
-        "start:firebase-functions": "yarn build:dev && firebase emulators:start --project TOFILL",
+        "start:firebase-functions": "yarn build:dev && firebase emulators:start",
         "start:e2e": "concurrently \"nx serve\" \"cd packages/apps/react-app-e2e && npx cypress open && cd ../../../\" -n \"App,Cypress\"",
         "build:dev": "NODE_ENV=development nx build && NODE_ENV=development nx run firebase-functions:build && yarn run-scripts",
         "build:prod": "NODE_ENV=production nx build && NODE_ENV=production nx run firebase-functions:build && yarn run-scripts",
@@ -19,10 +19,11 @@
         "local:unlink": "node ./tools/scripts/local.unlink.js",
         "storybooks:watch": "nx run-many --target=storybook --all",
         "storybooks:build": "NODE_ENV=production nx run-many --target=build-storybook --all",
-        "storybooks:publish": "yarn storybooks:build && npx chromatic --project-token=TOFILL --storybook-build-dir=dist/storybooks/react-app --exit-once-uploaded --allow-console-errors --no-interactive && npx chromatic --project-token=TOFILL --storybook-build-dir=dist/storybooks/react-app --exit-once-uploaded --allow-console-errors --no-interactive",
+        "storybooks:publish": "yarn storybooks:build && npx chromatic --storybook-build-dir=dist/storybooks/react-app --exit-once-uploaded --allow-console-errors --no-interactive && npx chromatic --storybook-build-dir=dist/storybooks/react-app --exit-once-uploaded --allow-console-errors --no-interactive",
         "update:libs": "yarn upgrade --pattern @honzachalupa --latest",
         "release": "standard-version",
-        "postinstall": "npx husky install"
+        "postinstall": "npx husky install",
+        "temp": "NODE_ENV=production && echo $NODE_ENV && dotenv -p NX_FIREBASE_API_KEY"
     },
     "dependencies": {
         "@honzachalupa/firebase": "^1.16.1",
@@ -89,6 +90,8 @@
         "commitlint": "^16.2.1",
         "concurrently": "^7.1.0",
         "cypress": "^10.1.0",
+        "dotenv": "^16.0.1",
+        "dotenv-cli": "^6.0.0",
         "eslint": "~8.7.0",
         "eslint-config-prettier": "8.1.0",
         "eslint-plugin-cypress": "^2.10.3",

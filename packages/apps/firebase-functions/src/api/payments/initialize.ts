@@ -6,7 +6,10 @@ interface IResponseData {
     errors?: { message: string }[];
 }
 
-const basicToken = Buffer.from("TOFILL", "utf-8").toString("base64");
+const basicToken = Buffer.from(
+    process.env["NX_GOPAY_BASIC_TOKEN"]!,
+    "utf-8",
+).toString("base64");
 
 export const initialize = (isDevMode: boolean): Promise<IResponseData> =>
     fetch(`${getGoPayApiUrl(isDevMode)}/oauth2/token`, {

@@ -1,5 +1,5 @@
 import { IContext, ICurrentRoute } from "@nx-stack/types";
-import { Helmet } from "@nx-stack/ui";
+import { Helmet, Loader } from "@nx-stack/ui";
 import { initialContext } from "@nx-stack/utils";
 import React, { useEffect, useState } from "react";
 import { onFirstLoad, onRouteChange } from "./App.functions";
@@ -38,9 +38,8 @@ export const App: React.FC = () => {
     return (
         <ProvidersWrapper context={{ ...state, ...globalFunctions }}>
             <Helmet />
-            <Router />
 
-            {/* TOFILL {state.user !== undefined ? <Router /> : <Loader />} */}
+            {state.user !== undefined ? <Router /> : <Loader />}
         </ProvidersWrapper>
     );
 };

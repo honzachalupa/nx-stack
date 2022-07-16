@@ -1,5 +1,13 @@
 import { initServiceWorker } from "@honzachalupa/utils";
-import { config, isProd } from "@nx-stack/utils";
+import { IContext } from "@nx-stack/types";
+import {
+    Analytics,
+    Authentication,
+    config,
+    isProd,
+    log,
+    UsersActions,
+} from "@nx-stack/utils";
 
 export const onFirstLoad = (setState: any) => {
     console.info(
@@ -11,7 +19,7 @@ export const onFirstLoad = (setState: any) => {
         isProd ? "Production" : "Development",
     );
 
-    /* Authentication.onAuthStateChanged((user) => {
+    Authentication.onAuthStateChanged((user) => {
         if (user?.uid) {
             Analytics.setUserId(user.uid);
 
@@ -35,7 +43,7 @@ export const onFirstLoad = (setState: any) => {
                 user: null,
             }));
         }
-    }); */
+    });
 
     if (config.caching && isProd) {
         initServiceWorker();

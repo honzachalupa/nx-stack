@@ -1,0 +1,11 @@
+name: Run E2E tests
+
+on: workflow_dispatch
+
+jobs:
+    run:
+        name: Run
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                  echo "Environment: ${{ env.NX_FIREBASE_PROJECT_ID }}"

@@ -30,7 +30,7 @@ const create = (data: IRequestData, accessToken: string) =>
             currency: "CZK",
             target: {
                 type: "ACCOUNT",
-                goid: 0, // TOFILL
+                goid: Number(process.env["NX_GOPAY_ACCOUNT_ID"]),
             },
             callback: {
                 return_url: data.callbackUrl,

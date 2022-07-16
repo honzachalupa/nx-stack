@@ -22,12 +22,10 @@ export const Form_SignUp: React.FC = () => {
         setIsLoading(true);
 
         Authentication.createUserWithEmailAndPassword(emailAddress, password)
-            .then(({ user }: any) => {
-                // TOFILL: Remove "any"
+            .then(({ user }) => {
                 UsersActions.create(user.uid, emailAddress)
                     .then(navigateTo.home)
-                    .catch((error: any) => {
-                        // TOFILL: Remove "any"
+                    .catch((error) => {
                         log({
                             code: "EXCEPTION",
                             scope: Form_SignUp.name,

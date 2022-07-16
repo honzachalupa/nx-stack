@@ -7,8 +7,7 @@ export const Page_AuthenticationSignOut: React.FC = () => {
     const handleSignOut = () =>
         Authentication.signOut()
             .then(() => navigateTo.home())
-            .catch((error: any) => {
-                // TOFILL: Remove "any"
+            .catch((error) => {
                 log({
                     code: "EXCEPTION",
                     scope: "Page_AuthenticationSignOut",

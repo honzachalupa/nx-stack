@@ -36,3 +36,5 @@ tools/bundle-analyzer/report.html
 /ui-debug.log
 *.cache
 /firebase-debug.log
+/.env
+/.env.local

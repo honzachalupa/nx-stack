@@ -8,7 +8,5 @@ module.exports = {
     developerName: "Jan Chalupa.",
     developerUrl: "https://www.honzachalupa.cz/",
     supportEmailAddress: "janchalupa@outlook.cz",
-    logtailTokenDev: "", // TOFILL
-    logtailTokenProd: "", // TOFILL
     caching: true,
 };

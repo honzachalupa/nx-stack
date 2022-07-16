@@ -36,8 +36,7 @@ export const Form_SignIn: React.FC = () => {
 
         Authentication.signInWithEmailAndPassword(emailAddress, password)
             .then(() => navigateTo.home())
-            .catch((error: any) => {
-                // TOFILL: Remove "any"
+            .catch((error) => {
                 setErrorCode(error.code);
             })
             .finally(() => {

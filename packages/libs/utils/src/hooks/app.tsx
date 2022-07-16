@@ -7,7 +7,7 @@ import {
 } from "@nx-stack/types";
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { config } from "..";
+import { Analytics, config } from "..";
 import { Context } from "../helpers/context";
 import { log } from "../helpers/logging";
 import { useAuthentication } from "./authentication";
@@ -81,7 +81,7 @@ export const useCurrentPage = ({ title, isAnalyticsDisabled }: IProps) => {
                     setCurrentRoute(currentRoute);
 
                     if (isCookiesAllowed && !isAnalyticsDisabled) {
-                        // Analytics.setCurrentScreen(currentRoute.id); // TOFILL
+                        Analytics.setCurrentScreen(currentRoute.id);
                     }
                 }
             } else {

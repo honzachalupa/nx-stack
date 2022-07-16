@@ -27,8 +27,7 @@ export const Form_PasswordReset: React.FC<IProps> = ({
     const handleSubmit = ({ emailAddress }: IFormData) => {
         Authentication.sendPasswordResetEmail(emailAddress as string)
             .then(onSubmit)
-            .catch((error: any) => {
-                // TOFILL: Remove "any"
+            .catch((error) => {
                 setErrorCode(error.code);
             });
     };

@@ -27,8 +27,7 @@ export const UsersActions = {
     get: (id: ISignedUser["id"]): Promise<ISignedUser> =>
         Database.get(Collections.users, id)
             .then(convertDocToItem)
-            .catch((error: any) => {
-                // TOFILL: Remove "any"
+            .catch((error) => {
                 log({
                     code: "EXCEPTION",
                     scope: "UsersActions",
@@ -41,8 +40,7 @@ export const UsersActions = {
     search: (query?: TQuery): Promise<ISignedUser[]> =>
         Database.search(Collections.users, query)
             .then(convertDocsToItems)
-            .catch((error: any) => {
-                // TOFILL: Remove "any"
+            .catch((error) => {
                 log({
                     code: "EXCEPTION",
                     scope: "UsersActions",

@@ -1,5 +1,5 @@
-import { Button } from "@nx-stack/ui";
 import { useNavigation } from "@nx-stack/utils";
+import { Button } from "../../../../components/atoms/Button";
 import { StyledContainer } from "./Navigation.styled";
 
 export const Navigation: React.FC = () => {

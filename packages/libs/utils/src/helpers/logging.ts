@@ -3,10 +3,8 @@ import {
     initializeLogger,
     TLogEntryLevels,
 } from "@honzachalupa/utils";
-import { config } from "../";
 // @ts-ignore
 import packageJson from "../../../../../package.json";
-import { isDev } from "./app";
 
 type TLogEntryCodes =
     | "INFO"
@@ -27,7 +25,7 @@ const levelsMap: {
 
 const logger = initializeLogger({
     logtail: {
-        token: isDev ? config.logtailTokenDev : config.logtailTokenProd,
+        token: process.env["NX_LOGTAIL_TOKEN"],
     },
     levelsMap,
     appVersion: packageJson.version,
